@@ -47,6 +47,16 @@ function sessionListener(e)
 	}
 }
 
+function onInitSuccess(e)
+{
+	
+}
+
+function onError(e)
+{
+	
+}
+
 function onLaunchError(e)
 {
 	
