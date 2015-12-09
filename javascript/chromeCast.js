@@ -9,6 +9,8 @@ window['__onGCastApiAvailable'] = function(loaded, errorInfo)
 	}
 }
 
+var currentMediaURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
+
 var session;
 
 initializeCastApi = function()
@@ -22,6 +24,19 @@ initializeCastApi = function()
 function launchApp()
 {
 	chrome.cast.requestSession(onRequestSessionSuccess, onLaunchError);
+}
+
+function loadMedia()
+{
+	var mediaInfo = new chrome.cast.media.MediaInfo(currentMediaURL);
+	var request = new chrome.cast.media.LoadRequest(mediaInfo);
+	
+	session.loadMedia(request, onMediaDiscovered.bind(this, 'loadMedia'), onMediaError);
+	
+	function onMediaDiscovered(how, media)
+	{
+		currentMedia = media;
+	}
 }
 
 function onRequestSessionSuccess(e)
@@ -61,3 +76,7 @@ function onLaunchError(e)
 {
 	
 }
+
+function onMediaError(e)
+{
+	}
