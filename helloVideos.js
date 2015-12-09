@@ -373,12 +373,15 @@ function onMediaDiscovered(how, mediaSession)
 {
 	console.log('new media session ID:' + mediaSession.mediaSessionId);
 	appendMessage('new media session ID:' + mediaSession.mediaSessionId + ' (' + how + ')');
+	
 	currentMediaSession = mediaSession;
 	currentMediaSession.addUpdateListener(onMediaStatusUpdate);
 	mediaCurrentTime = currentMediaSession.currentTime;
+	
 	playpauseresume.innerHTML = 'Play';
 	document.getElementById('casticon').src = CAST_ICON_THUMB_ACTIVE;
 	document.getElementById('playerstate').innerHTML = currentMediaSession.playerState;
+	
 	if (!timer)
 	{
 		timer = setInterval(updateCurrentTime.bind(this), PROGRESS_BAR_UPDATE_DELAY);

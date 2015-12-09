@@ -29,14 +29,30 @@ function launchApp()
 function loadMedia()
 {
 	var mediaInfo = new chrome.cast.media.MediaInfo(currentMediaURL);
+	
+	mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
+	mediaInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
+	mediaInfo.contentType = 'video/mp4';
+	
+	mediaInfo.metadata.title = 'CouchTuner';
+	
 	var request = new chrome.cast.media.LoadRequest(mediaInfo);
+	request.autoplay = true;
+	request.currentTime = 0;
 	
 	session.loadMedia(request, onMediaDiscovered.bind(this, 'loadMedia'), onMediaError);
 	
 	function onMediaDiscovered(how, media)
 	{
 		currentMedia = media;
+		
+		media.addUpdateListener(onMediaStatusUpdate);
 	}
+}
+
+function onMediaStatusUpdate(e)
+{
+	
 }
 
 function onRequestSessionSuccess(e)
