@@ -9,7 +9,7 @@ window['__onGCastApiAvailable'] = function(loaded, errorInfo)
 	}
 }
 
-var currentMediaURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
+var currentMediaURL = 'http://89.36.224.55/2t4w5d22azv5epwppnxs25o3du4oafkgqdjdgbsffzl4ykumi2z3nxj3fsea/tn6i0jqegabk_n.ts?video=0';
 
 var session;
 
