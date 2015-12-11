@@ -9,7 +9,7 @@ window['__onGCastApiAvailable'] = function(loaded, errorInfo)
 	}
 }
 
-var currentMediaURL = 'http://89.36.224.55/2t4w5d22azv5epwppnxs25o3du4oafkgqdjdgbsffzl4ykumi2z3nxj3fsea/tn6i0jqegabk_n.ts?video=0';
+var currentMediaURL = 'http://89.36.224.55/2t4w5d22azv5epwppnxs25o3du4oafkgqdjdgbsffzl4ykumi2z3nxj3fsea/tn6i0jqegabk_n.ts';
 
 var session;
 
@@ -71,11 +71,6 @@ function receiverListener(e)
 function sessionListener(e)
 {
 	session = e;
-	
-	if (session.media.length != 0)
-	{
-		onMediaDiscovered('onRequestSessionSuccess', session.media[0]);
-	}
 }
 
 function onInitSuccess(e)
